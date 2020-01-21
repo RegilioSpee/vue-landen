@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <Landen v-bind:landen="landen" />
+    <Header />
+    <AddLand />
+    <Landen v-bind:landen="landen" v-on:del-land="deleteLand" />
   </div>
 </template>
 
 <script>
+import Header from './components/layout/Header';
 import Landen from './components/Landen';
+import AddLand from './components/AddLand';
 
 
 export default {
   name: 'app',
   components: {
-    Landen
+    Header,
+    Landen,
+    AddLand
   },
   data() {
     return {
@@ -32,6 +38,11 @@ export default {
           completed: false
         }
       ]
+    }
+  },
+  methods: {
+    deleteLand(id) {
+      this.landen = this.landen.filter(land => land.id !== id);
     }
   }
 }
