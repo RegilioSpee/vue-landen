@@ -13,7 +13,23 @@ export default {
   },
   data() {
     return {
-      msg: 'Hello'
+      landen: [
+        {
+          id: 1,
+          title: "Nederland",
+          completed: false
+        },
+        {
+          id: 2,
+          title: "Amerika",
+          completed: true
+        },
+        {
+          id: 3,
+          title: "Belgie",
+          completed: false
+        }
+      ]
     }
   }
 }
