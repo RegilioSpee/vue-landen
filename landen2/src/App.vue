@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <AddLand />
+    <AddLand v-on:add-land="addLand"/>
     <Landen v-bind:landen="landen" v-on:del-land="deleteLand" />
   </div>
 </template>
@@ -43,6 +43,9 @@ export default {
   methods: {
     deleteLand(id) {
       this.landen = this.landen.filter(land => land.id !== id);
+    },
+    addLand(newLand) {
+      this.landen = [...this.landen, newLand];
     }
   }
 }
