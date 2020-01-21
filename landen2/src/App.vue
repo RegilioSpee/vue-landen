@@ -10,7 +10,7 @@
 import Header from './components/layout/Header';
 import Landen from './components/Landen';
 import AddLand from './components/AddLand';
-
+import axios from 'axios';
 
 export default {
   name: 'app',
@@ -21,23 +21,7 @@ export default {
   },
   data() {
     return {
-      landen: [
-        {
-          id: 1,
-          title: "Nederland",
-          completed: false
-        },
-        {
-          id: 2,
-          title: "Amerika",
-          completed: true
-        },
-        {
-          id: 3,
-          title: "Belgie",
-          completed: false
-        }
-      ]
+      landen: []
     }
   },
   methods: {
@@ -45,8 +29,18 @@ export default {
       this.landen = this.landen.filter(land => land.id !== id);
     },
     addLand(newLand) {
-      this.landen = [...this.landen, newLand];
+      const { title, completed } = newLand;
+
+      axios.post('https://jsonplaceholder.typicode.com/todos', {
+       title,
+       completed 
+      })
+      .then(res => this.landen = [...this.landen, res.data]);
     }
+  },
+  created() {
+    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
+    .then(res => this.landen = res.data)
   }
 }
 </script>

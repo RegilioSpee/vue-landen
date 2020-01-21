@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import uuid from 'uuid';
+// import uuid from 'uuid';
 export default {
     name: "AddLand",
     data() {
@@ -20,7 +20,6 @@ export default {
         addLand(e) {
             e.preventDefault();
             const newLand = {
-                id: uuid.v4(),
                 title: this.title,
                 completed: false
             }
