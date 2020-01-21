@@ -1,13 +1,21 @@
 <template>
     <div class="land-item" v-bind:class="{'is-complete':land.completed}">
-      <p>{{land.title}}</p>  
+      <p>
+          <input type="checkbox" v-on:change="markComplete">
+          {{land.title}}</p>  
+          <button class="del">x</button>
     </div>
 </template>
 
 <script>
 export default {
     name: "LandItem",
-    props: ["land"]
+    props: ["land"],
+    methods: {
+        markComplete() {
+            this.land.completed = !this.land.completed;
+        }
+    }
 }
 </script>
 
