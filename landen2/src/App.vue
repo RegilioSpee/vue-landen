@@ -1,15 +1,17 @@
 <template>
   <div id="app">
-    {{msg}}
+    <Landen v-bind:landen="landen" />
   </div>
 </template>
 
 <script>
+import Landen from './components/Landen';
+
 
 export default {
   name: 'app',
   components: {
-    
+    Landen
   },
   data() {
     return {
